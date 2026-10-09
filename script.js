@@ -1,8 +1,7 @@
 const $ = s => document.querySelector(s), ev = $('#ev'), hv = $('#hv'), bgm = $('#bgm');
 let opened = false;
-// ===== ta7mil el envelope 2abl el dast =====
-const btn = $("#openBtn"), btnTxt = btn.textContent;
-btn.disabled = true; btn.textContent = "...";
+
+// sora el envelope fo2 el fidyo l7ad ma awl frame yetrasem (3shan ma yzhar4 shasha 7amra)
 const cover = document.createElement("img");
 cover.src = ev.getAttribute("poster"); cover.className = "epc"; cover.alt = "";
 ev.after(cover);
@@ -13,15 +12,7 @@ function watch() {
         ev.requestVideoFrameCallback(f);
     } else ev.addEventListener("timeupdate", () => { if (ev.currentTime > .05) uncover(); });
 }
-let ready = false;
-function enable() { if (ready) return; ready = true; btn.disabled = false; btn.textContent = btnTxt; }
-fetch(ev.getAttribute("src")).then(r => r.blob()).then(b => {
-    ev.src = URL.createObjectURL(b);
-    ev.addEventListener("loadeddata", enable, { once: true });
-    ev.load();
-}).catch(enable);
-setTimeout(enable, 6000);
-fetch("hero.mp4").catch(() => {});
+
 
 function open_() {
     if (opened) return;
@@ -42,15 +33,16 @@ function open_() {
 // Hna zydna hv.play() awl ma el user ydws 3la el zarrar
 $('#openBtn').onclick = () => {
     $('#openBtn').style.display = 'none';
-    
-    // el o8nya (audio id="bgm") btshtaghal f nafs la7zt el dast 3shan el mobile browsers
     bgm.play().then(() => setSnd(true)).catch(() => {});
-
-   watch();
-ev.play().then(() => {
+    watch();
     ev.onended = open_;
-    setTimeout(open_, 6000);
-}).catch(open_);
+    // el wa2t byb2a mn lahzet ma el fidyo byshtaghal fe3lan
+    ev.addEventListener('playing', () => {
+        setTimeout(open_, (ev.duration || 3) * 1000 + 300);
+        if (location.protocol.startsWith('http')) fetch('hero.mp4').catch(() => {});
+    }, { once: true });
+    ev.play().catch(open_);
+    setTimeout(open_, 12000); // ehtiyaty
 };
 
 const ar = n => String(n).padStart(2, '0');

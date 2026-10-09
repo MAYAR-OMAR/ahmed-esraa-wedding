@@ -1,4 +1,4 @@
-const $ = s => document.querySelector(s), ev = $('#ev'), hv = $('#hv');
+const $ = s => document.querySelector(s), ev = $('#ev'), hv = $('#hv'), bgm = $('#bgm');
 let opened = false;
 
 function open_() {
@@ -9,6 +9,7 @@ function open_() {
     
     setTimeout(() => {
         document.body.classList.add('go');
+        hv.play().catch(() => {});   // fidyo el nafora (muted) - yeshtaghal ba3d el fat7
     }, 500);
     
     if (!matchMedia('(prefers-reduced-motion:reduce)').matches) {
@@ -20,8 +21,8 @@ function open_() {
 $('#openBtn').onclick = () => {
     $('#openBtn').style.display = 'none';
     
-    // Tsh8il el o8nya f nafs la7zt el dast 3shan el mobile browsers
-    hv.play().catch(e => console.log("Audio play prevented:", e));
+    // el o8nya (audio id="bgm") btshtaghal f nafs la7zt el dast 3shan el mobile browsers
+    bgm.play().then(() => setSnd(true)).catch(() => {});
 
     ev.play().then(() => {
         ev.onended = open_;
@@ -100,34 +101,16 @@ function stop() {
 $('#as').onclick = () => as ? stop() : start();
 ui();
 
-let ac, g, on = false;
+// zorar el sot: byshaghal / yewaqqaf el o8nya el mp3
+function setSnd(v) { $('#wv').style.opacity = v ? 1 : .25; }
+let wasOn = false;
 $('#snd').onclick = () => {
-    try {
-        if (!ac) {
-            ac = new (window.AudioContext || webkitAudioContext)();
-            g = ac.createGain();
-            g.gain.value = 0;
-            g.connect(ac.destination);
-            [220, 277.2, 329.6, 440].forEach((f, i) => {
-                const o = ac.createOscillator(), l = ac.createOscillator(), lg = ac.createGain();
-                o.type = 'sine';
-                o.frequency.value = f;
-                l.frequency.value = .1 + i * .04;
-                lg.gain.value = .012;
-                l.connect(lg);
-                const og = ac.createGain();
-                og.gain.value = .03;
-                lg.connect(og.gain);
-                o.connect(og).connect(g);
-                o.start();
-                l.start();
-            });
-        }
-        on = !on;
-        ac.resume();
-        g.gain.linearRampToValueAtTime(on ? 1 : 0, ac.currentTime + 1.2);
-        $('#wv').style.opacity = on ? 1 : .25;
-    } catch (e) {}
+    if (bgm.paused) bgm.play().then(() => setSnd(true)).catch(() => {});
+    else { bgm.pause(); setSnd(false); }
 };
-
-$('#wv').style.opacity = .25;
+// law el user 5arag mn el tab, nwaqqaf el o8nya w nrg3ha lama yrg3
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { wasOn = !bgm.paused; bgm.pause(); }
+    else if (wasOn) bgm.play().catch(() => {});
+});
+setSnd(false);

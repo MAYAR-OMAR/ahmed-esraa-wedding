@@ -130,3 +130,27 @@ section:not(#hero){color:#fff}
 .rv{opacity:0;transform:translateY(16px);transition:1s}
 .rv.on{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.h1,.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+.map-link-card {
+    display: block;
+    width: 100%;
+    max-width: 450px; /* Aw el 7gm elly mnasb ll design bta3k */
+    margin: 20px auto;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.map-link-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.map-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}

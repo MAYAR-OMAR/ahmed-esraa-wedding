@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دعوة زفاف أحمد وإسراء</title>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@300;400;600&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="lock">
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="rose" viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="#fffcf9" stroke="#e6d6d4"/><circle cx="50" cy="50" r="32" fill="none" stroke="#d9c3c0" stroke-width="2"/><circle cx="50" cy="50" r="20" fill="none" stroke="#d9c3c0" stroke-width="2"/><circle cx="50" cy="50" r="8" fill="#f1dcd9"/></symbol>
+<symbol id="sprig" viewBox="0 0 160 120"><g fill="#3d5a47"><path d="M10 110C40 80 80 60 150 20" stroke="#3d5a47" stroke-width="3" fill="none"/><ellipse cx="45" cy="78" rx="22" ry="8" transform="rotate(-40 45 78)"/><ellipse cx="75" cy="52" rx="22" ry="8" transform="rotate(-25 75 52)" fill="#9bb09f"/><ellipse cx="105" cy="52" rx="20" ry="7" transform="rotate(35 105 52)"/><ellipse cx="120" cy="32" rx="18" ry="7" transform="rotate(-20 120 32)" fill="#9bb09f"/><ellipse cx="60" cy="90" rx="20" ry="7" transform="rotate(30 60 90)" fill="#9bb09f"/></g></symbol>
+<symbol id="branch" viewBox="0 0 90 320"><path d="M30 320C18 220 42 120 30 4" stroke="#4f7359" stroke-width="3" fill="none"/><ellipse cx="16" cy="290" rx="19" ry="7" transform="rotate(35 16 290)" fill="#4f7359"/><ellipse cx="44" cy="256" rx="19" ry="7" transform="rotate(-35 44 256)" fill="#7fa088"/><ellipse cx="16" cy="222" rx="19" ry="7" transform="rotate(35 16 222)" fill="#4f7359"/><ellipse cx="44" cy="188" rx="19" ry="7" transform="rotate(-35 44 188)" fill="#7fa088"/><ellipse cx="16" cy="154" rx="19" ry="7" transform="rotate(35 16 154)" fill="#4f7359"/><ellipse cx="44" cy="120" rx="19" ry="7" transform="rotate(-35 44 120)" fill="#7fa088"/><ellipse cx="16" cy="86" rx="19" ry="7" transform="rotate(35 16 86)" fill="#4f7359"/><ellipse cx="44" cy="52" rx="19" ry="7" transform="rotate(-35 44 52)" fill="#7fa088"/><use href="#rose" x="38" y="96" width="28" height="28"/><use href="#rose" x="2" y="170" width="24" height="24"/><use href="#rose" x="40" y="236" width="20" height="20"/></symbol><symbol id="flo" viewBox="0 0 160 160"><use href="#sprig" x="0" y="40" width="160" height="120"/><use href="#rose" x="5" y="5" width="80" height="80"/><use href="#rose" x="70" y="55" width="60" height="60"/><use href="#rose" x="20" y="85" width="45" height="45"/></symbol>
+</defs></svg>
+
+<div id="env"><div class="box">
+<video id="ev" src="assets/envelope.mp4" poster="assets/envelope-poster.jpg" muted playsinline preload="auto"></video>
+<div class="tint"></div><div class="tint2"></div>
+<button id="openBtn">اضغط لفتح الدعوة</button></div></div>
+
+<button id="snd" aria-label="تشغيل أو إيقاف الصوت"><svg id="si" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h4l5-4v14l-5-4H3z"/><path id="wv" d="M16 9a4 4 0 010 6M19 6a8 8 0 010 12"/></svg></button>
+
+<button id="as" aria-label="تمرير تلقائي" aria-pressed="false" style="position:fixed;z-index:40;bottom:calc(20px + env(safe-area-inset-bottom,0px));width:56px;height:56px;border-radius:50%;border:0;background:var(--paper);color:var(--w5);display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.25)"><svg id="ai" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></svg></button>
+<main class="col">
+<section id="hero">
+<video id="hv" src="assets/hero.mp4" muted loop playsinline preload="auto"></video><div class="ov"></div>
+<div class="in">
+<div class="bis ruq h1" style="--i:0">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+<div class="sub h1" style="--i:1">نتشرف بدعوتكم لحفل زفافنا</div>
+<div class="rule h1" style="--i:2">★</div>
+<div class="nm ruq h1" style="--i:3">أحمد</div>
+<div class="amp h1" style="--i:4">&amp;</div>
+<div class="nm ruq h1" style="--i:5">إسراء</div>
+<div class="rule h1" style="--i:6">★</div>
+<div class="dt ruq h1" style="--i:7">٦ نوفمبر ٢٠٢٦</div>
+
+</div><img class="pe" id="pe1" src="assets/flowers.webp" alt=""></section>
+
+<section id="inv">
+<div class="arch"></div>
+<svg class="fl" style="top:0;right:0"><use href="#flo"/></svg>
+<svg class="fl" style="top:0;left:0;transform:scaleX(-1)"><use href="#flo"/></svg>
+<svg class="fl" style="bottom:0;left:0;width:130px;height:130px"><use href="#flo"/></svg>
+<svg class="fl" style="bottom:0;right:0;width:130px;height:130px;transform:scaleX(-1)"><use href="#flo"/></svg>
+<div class="inv rv">
+<div class="big ruq">يتشرف</div>
+<div class="pair"><div><span class="t">المهندس</span><span class="n ruq">خالد عمران</span></div>
+<div><span class="t">الحاج</span><span class="n ruq">محمد الأصفر</span></div></div>
+<div class="txt">بدعوتكم لحضور زفاف نجليهما</div>
+<div class="pair" style="gap:18px;align-items:flex-end"><div><span class="t">الدكتور</span><span class="n ruq">أحمد</span></div><span class="n ruq">و</span><div><span class="t">الدكتورة</span><span class="n ruq">إسراء</span></div></div>
+<div class="ayah">﴿وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا﴾</div>
+<div class="dua">بارك الله لهما وبارك عليهما وجمع بينهما في خير</div>
+</div></section>
+
+<section id="cd"><svg class="br t l" viewBox="0 0 90 320" aria-hidden="true"><use href="#branch" style="transform:scale(1,-1);transform-box:fill-box;transform-origin:center"/></svg><svg class="br t r" viewBox="0 0 90 320" aria-hidden="true"><use href="#branch" style="transform:scale(-1,-1);transform-box:fill-box;transform-origin:center"/></svg><svg class="br b l" viewBox="0 0 90 320" aria-hidden="true"><use href="#branch" style="transform:scale(1,1);transform-box:fill-box;transform-origin:center"/></svg><svg class="br b r" viewBox="0 0 90 320" aria-hidden="true"><use href="#branch" style="transform:scale(-1,1);transform-box:fill-box;transform-origin:center"/></svg>
+<div class="sv ruq">Save The Date </div><div class="sd" dir="ltr">٦ . ١١ . ٢٠٢٦</div>
+<div class="pol"><div class="f"><div class="ph"><img src="assets/ahmed.jpg" alt="أحمد"><img src="assets/esraa.jpg" alt="إسراء"></div></div>
+<svg style="top:-34px;left:-34px;transform:rotate(-20deg)"><use href="#sprig"/></svg>
+<svg style="bottom:-30px;right:-34px;transform:rotate(160deg)"><use href="#sprig"/></svg></div>
+<div class="cdt cdt-a"> CountDown  </div>
+<div class="until">حتى يوم الجمعة ٦ نوفمبر ٢٠٢٦<br><b>الساعة ٨ مساءً</b></div>
+<div class="boxes" id="bx"><div class="bx"><b>00</b><span>DAYS</span></div><div class="bx"><b>00</b><span>HOURS</span></div><div class="bx"><b>00</b><span>MINS</span></div><div class="bx"><b>00</b><span>SECS</span></div></div>
+<div class="wel">أهلاً بكم</div>
+<p class="wp">منذ اللحظة الأولى، علمنا أن قصتنا تستحق الاحتفال. يشرفنا وجودكم معنا ونحن نبدأ هذا الفصل الجديد، محاطين بأكثر الأشخاص الذين نحبهم.</p>
+</section>
+
+<section id="ven"><svg class="br t l" viewBox="0 0 90 320" aria-hidden="true"><use href="#branch" style="transform:scale(1,-1);transform-box:fill-box;transform-origin:center"/></svg><svg class="br t r" viewBox="0 0 90 320" aria-hidden="true"><use href="#branch" style="transform:scale(-1,-1);transform-box:fill-box;transform-origin:center"/></svg><svg class="br b l" viewBox="0 0 90 320" aria-hidden="true"><use href="#branch" style="transform:scale(1,1);transform-box:fill-box;transform-origin:center"/></svg><svg class="br b r" viewBox="0 0 90 320" aria-hidden="true"><use href="#branch" style="transform:scale(-1,1);transform-box:fill-box;transform-origin:center"/></svg>
+<svg class="b rv" viewBox="0 0 360 170" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 160h320M40 160v-70h280v70M150 90l30-30 30 30M150 90h60M130 160v-60M230 160v-60M150 160v-60M210 160v-60M170 160v-60M190 160v-60M60 160v-50M300 160v-50M10 160h340M30 170h300"/><path d="M165 160v-30a15 15 0 0130 0v30"/><g><rect x="55" y="105" width="14" height="22"/><rect x="85" y="105" width="14" height="22"/><rect x="261" y="105" width="14" height="22"/><rect x="291" y="105" width="14" height="22"/></g></svg>
+<div class="vn ruq rv">قاعة إليزيه</div>
+<div class="vc ruq rv">نادي ٦ أكتوبر</div>
+<div class="vl rv">مكان الحفل</div><div class="vl rv" style="color:var(--sage)">يوم الجمعة ٦ نوفمبر ٢٠٢٦ · الساعة ٨ مساءً</div>
+<a class="ph2 rv" href="https://maps.app.goo.gl/HVQM5vEbZ224rzEf6?g_st=iw" target="_blank" rel="noopener"><span>↗ اضغط لفتح الموقع</span></a>
+</section>
+
+<section id="end"><svg class="br t l" viewBox="0 0 90 320" aria-hidden="true"><use href="#branch" style="transform:scale(1,-1);transform-box:fill-box;transform-origin:center"/></svg><svg class="br t r" viewBox="0 0 90 320" aria-hidden="true"><use href="#branch" style="transform:scale(-1,-1);transform-box:fill-box;transform-origin:center"/></svg><svg class="br b l" viewBox="0 0 90 320" aria-hidden="true"><use href="#branch" style="transform:scale(1,1);transform-box:fill-box;transform-origin:center"/></svg><svg class="br b r" viewBox="0 0 90 320" aria-hidden="true"><use href="#branch" style="transform:scale(-1,1);transform-box:fill-box;transform-origin:center"/></svg>
+<div class="rings rv"><i></i><i></i></div>
+<img class="bf rv" src="assets/butterfly-heart.webp" alt="A &amp; E">
+<div class="edt ruq rv" style="font-size:24px">٦ نوفمبر ٢٠٢٦</div>
+<img class="pe" id="pe2" alt="">
+</section>
+</main>
+
+<script src="js/script.js"></script>
+</body>
+</html>

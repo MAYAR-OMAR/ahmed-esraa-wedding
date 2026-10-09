@@ -154,3 +154,5 @@ section:not(#hero){color:#fff}
     display: block;
     object-fit: cover;
 }
+#env .epc{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#openBtn:disabled{opacity:.6;animation:none;cursor:wait}

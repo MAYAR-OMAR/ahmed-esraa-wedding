@@ -1,5 +1,27 @@
 const $ = s => document.querySelector(s), ev = $('#ev'), hv = $('#hv'), bgm = $('#bgm');
 let opened = false;
+// ===== ta7mil el envelope 2abl el dast =====
+const btn = $("#openBtn"), btnTxt = btn.textContent;
+btn.disabled = true; btn.textContent = "...";
+const cover = document.createElement("img");
+cover.src = ev.getAttribute("poster"); cover.className = "epc"; cover.alt = "";
+ev.after(cover);
+function uncover() { cover.style.display = "none"; }
+function watch() {
+    if ("requestVideoFrameCallback" in ev) {
+        const f = (n, m) => m.mediaTime > 0 ? uncover() : ev.requestVideoFrameCallback(f);
+        ev.requestVideoFrameCallback(f);
+    } else ev.addEventListener("timeupdate", () => { if (ev.currentTime > .05) uncover(); });
+}
+let ready = false;
+function enable() { if (ready) return; ready = true; btn.disabled = false; btn.textContent = btnTxt; }
+fetch(ev.getAttribute("src")).then(r => r.blob()).then(b => {
+    ev.src = URL.createObjectURL(b);
+    ev.addEventListener("loadeddata", enable, { once: true });
+    ev.load();
+}).catch(enable);
+setTimeout(enable, 6000);
+fetch("hero.mp4").catch(() => {});
 
 function open_() {
     if (opened) return;
@@ -24,10 +46,11 @@ $('#openBtn').onclick = () => {
     // el o8nya (audio id="bgm") btshtaghal f nafs la7zt el dast 3shan el mobile browsers
     bgm.play().then(() => setSnd(true)).catch(() => {});
 
-    ev.play().then(() => {
-        ev.onended = open_;
-        setTimeout(open_, 4500);
-    }).catch(open_);
+   watch();
+ev.play().then(() => {
+    ev.onended = open_;
+    setTimeout(open_, 6000);
+}).catch(open_);
 };
 
 const ar = n => String(n).padStart(2, '0');

@@ -5,6 +5,10 @@ let opened = false;
 const cover = document.createElement("img");
 cover.src = ev.getAttribute("poster"); cover.className = "epc"; cover.alt = "";
 ev.after(cover);
+let clicked = false;
+// tskhin el fidyo 2abl el dast (muted) 3shan el fat7 ybd2 3ltol 3la el mobile
+ev.muted = true;
+ev.play().then(() => { if (!clicked) { ev.pause(); ev.currentTime = 0; } }).catch(() => {});
 function uncover() { cover.style.display = "none"; }
 function watch() {
     if ("requestVideoFrameCallback" in ev) {
@@ -20,10 +24,10 @@ function open_() {
     $('#env').classList.add('out');
     document.body.classList.remove('lock');
     
-    setTimeout(() => {
-        document.body.classList.add('go');
-        hv.play().catch(() => {});   // fidyo el nafora (muted) - yeshtaghal ba3d el fat7
-    }, 500);
+    // el fidyo yebda2 mn awl el sanya 3ltol, w el kalam yebda2 ma3ah (mn gheir ta2kheer)
+    try { hv.currentTime = 0; } catch (e) {}
+    hv.play().catch(() => {});
+    document.body.classList.add('go');
     
     if (!matchMedia('(prefers-reduced-motion:reduce)').matches) {
         setTimeout(start, 9000);
@@ -32,16 +36,17 @@ function open_() {
 
 // Hna zydna hv.play() awl ma el user ydws 3la el zarrar
 $('#openBtn').onclick = () => {
+    clicked = true;
     $('#openBtn').style.display = 'none';
+    ev.play().catch(open_);      // el envelope el awl 3shan ma yet2akhar4 3la el mobile
     bgm.play().then(() => setSnd(true)).catch(() => {});
     watch();
     ev.onended = open_;
     // el wa2t byb2a mn lahzet ma el fidyo byshtaghal fe3lan
     ev.addEventListener('playing', () => {
-        setTimeout(open_, (ev.duration || 3) * 1000 + 300);
-        if (location.protocol.startsWith('http')) fetch('hero.mp4').catch(() => {});
+        hv.play().catch(() => {});   // fidyo el nafora yebda2 ba3d ma el envelope yeshtaghal (mn gheir ta3arod)
+        setTimeout(open_, Math.max(1200, (ev.duration || 3) * 1000 - 500));
     }, { once: true });
-    ev.play().catch(open_);
     setTimeout(open_, 12000); // ehtiyaty
 };
 
